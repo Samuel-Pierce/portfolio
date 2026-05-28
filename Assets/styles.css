@@ -176,7 +176,7 @@ nav {
 
 /* ── SHARED UTILITIES ── */
 mark {
-  background: oklch(0.85 0.09 293 / 0.4);
+  background: oklch(84.726% 0.08369 293.688 / 0.4);
   color: #111;
   font-weight: 400;
   border-radius: 3px;
@@ -289,19 +289,18 @@ mark {
   padding: 4px 16px 4px 4px;
   border-radius: 999px;
   gap: 12px;
-  font-family: sans-serif;
   margin-bottom: 28px;
 }
 
 .badge-pill {
   display: flex;
   align-items: center;
-  background-color: #a855f7;
+  background: linear-gradient(to right, #7c22d4, #a855f7);
   color: white;
   padding: 6px 14px 6px 8px;
   border-radius: 999px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   gap: 8px;
 }
 
@@ -527,7 +526,7 @@ mark {
 
 /* Case Studies */
 .case-studies {
-  background: #f6f6f6;
+  background: #fafafa;
   padding: 80px 24px;
   text-align: center;
 }
@@ -660,7 +659,7 @@ mark {
 
 /* Hybrid Approach */
 .hybrid-section {
-  background: #f6f6f6;
+  background: #fafafa;
   padding: 80px 24px;
 }
 
@@ -758,7 +757,7 @@ mark {
 .expertise-card p { font-size: 13px; color: #777; line-height: 1.65; }
 
 /* Philosophy */
-.philosophy-section { background: #f6f6f6; padding: 80px 24px; text-align: center; }
+.philosophy-section { background: #fafafa; padding: 80px 24px; text-align: center; }
 
 .philosophy-section h2 { font-size: 34px; font-weight: 700; margin-bottom: 18px; }
 
@@ -928,7 +927,7 @@ mark {
 .evolving-section {
   padding: 80px 24px 96px;
   text-align: center;
-  background: #fff;
+  background: #fafafa;
   border-top: 1px solid #ebebeb;
 }
 
@@ -1030,7 +1029,7 @@ mark {
 /* Work Experience */
 .experience-section.resume-experience {
   padding: 80px 24px;
-  background: #f6f6f6;
+  background: #fafafa;
   text-align: unset;
 }
 
@@ -1147,7 +1146,7 @@ mark {
 }
 
 /* Education */
-.education-section { padding: 80px 24px; background: #f6f6f6; }
+.education-section { padding: 80px 24px; background: #fafafa; }
 .education-section h2 { font-size: 34px; font-weight: 700; text-align: center; margin-bottom: 10px; }
 .edu-cards { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
 
