@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Powered Compliance Platform — Samuel Pierce</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../Assets/avatar.png" type="image/png" />
+  <link rel="stylesheet" href="../Assets/styles.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">
+        <div class="nav-avatar">
+          <img src="../Assets/avatar.png" alt="Sam Pierce" />
+        </div>
+        <div class="nav-logo-info">
+          <strong>Samuel Pierce</strong>
+          <span>AI-powered Design Systems Lead &amp; Super IC</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Work</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="https://www.linkedin.com/in/uxpierce/" target="_blank">LinkedIn</a></li>
+        <li><a href="../contact.html" class="btn-contact">Contact</a></li>
+      </ul>
+      <div class="nav-mobile-right">
+        <a href="../contact.html" class="btn-contact-mobile">Contact</a>
+        <button class="nav-hamburger" id="nav-hamburger-btn" aria-label="Open menu">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+            <line x1="0" y1="1" x2="16" y2="1" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="0" y1="6" x2="16" y2="6" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="0" y1="11" x2="16" y2="11" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="nav-overlay" id="nav-overlay">
+    <div class="nav-overlay-header">
+      <a class="nav-logo" href="../index.html">
+        <div class="nav-avatar">
+          <img src="../Assets/avatar.png" alt="Sam Pierce" />
+        </div>
+        <div class="nav-logo-info">
+          <strong>Samuel Pierce</strong>
+          <span>AI-powered Design Systems Lead &amp; Super IC</span>
+        </div>
+      </a>
+      <button class="nav-hamburger" id="nav-close-btn" aria-label="Close menu">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <line x1="1" y1="1" x2="13" y2="13" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="1" x2="1" y2="13" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <ul class="nav-overlay-links">
+      <li><a href="../index.html">Work</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+      <li><a href="https://www.linkedin.com/in/uxpierce/" target="_blank">LinkedIn</a></li>
+    </ul>
+    <div class="nav-overlay-footer">
+      <a href="../contact.html" class="nav-overlay-contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="cs-page-hero">
+    <p class="page-label">AI Product Design · Osprey Life Sciences</p>
+    <h1>AI-Powered Compliance Platform</h1>
+    <p>Designed an AI-driven platform that automates policy compliance analysis of complex documents for the life sciences industry, enabling faster regulatory review at scale.</p>
+    <div class="hero-ctas">
+      <a href="../index.html" class="btn-outline">← Back to Work</a>
+    </div>
+  </div>
+
+  <!-- COVER IMAGE -->
+  <div style="padding: 0 24px; margin-bottom: 80px;">
+    <div class="cs-page-cover" style="background: linear-gradient(135deg, #0f5c4a, #16a34a); border-radius: 16px;"></div>
+  </div>
+
+  <!-- PLACEHOLDER CONTENT -->
+  <div style="max-width: 860px; margin: 0 auto; padding: 0 24px 120px;">
+    <div class="cs-placeholder-msg">
+      <h2>Full Case Study Coming Soon</h2>
+      <p>Osprey Life Sciences needed a purpose-built platform to help compliance teams analyze and cross-reference dense policy documents using AI. I led the end-to-end UX design — from discovery and information architecture through high-fidelity UI — working closely with their engineering and product teams to ship an intuitive experience on top of complex AI infrastructure.</p>
+      <br>
+      <p style="color: #aaa; font-size: 13px;">Detailed writeup, process documentation, and outcomes in progress.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('nav-hamburger-btn').addEventListener('click', function() {
+      document.getElementById('nav-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    document.getElementById('nav-close-btn').addEventListener('click', function() {
+      document.getElementById('nav-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  </script>
+  <script src="../Assets/confetti.js"></script>
+</body>
+</html>
