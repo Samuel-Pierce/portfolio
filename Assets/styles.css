@@ -704,6 +704,159 @@ mark {
 /* Index contact section has no border-top */
 .hero + .case-studies + .contact-section { border-top: none; }
 
+/* Case study content sections */
+.cs-content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+}
+
+.cs-section {
+  padding: 64px 0;
+  border-top: 1px solid #ebebeb;
+}
+
+.cs-section:first-child { border-top: none; }
+
+.cs-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.cs-section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+
+.cs-section-body {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.8;
+}
+
+.cs-section-body p { margin-bottom: 16px; }
+.cs-section-body p:last-child { margin-bottom: 0; }
+
+.cs-section-body ul {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.cs-section-body ul li {
+  margin-bottom: 8px;
+  line-height: 1.7;
+}
+
+.cs-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.cs-two-col-item h4 {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.cs-two-col-item p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.7;
+}
+
+.cs-callout {
+  background: #fafafa;
+  border-left: 3px solid #7c5cbf;
+  padding: 20px 24px;
+  border-radius: 0 8px 8px 0;
+  margin: 24px 0;
+}
+
+.cs-callout p {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.cs-findings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.cs-finding-card {
+  background: #fafafa;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.cs-finding-card .finding-number {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.cs-finding-card p {
+  font-size: 13.5px;
+  color: #333;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.cs-outcome-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 32px 0;
+}
+
+.cs-stat {
+  text-align: center;
+  padding: 28px 16px;
+  background: #fafafa;
+  border-radius: 12px;
+  border: 1px solid #ebebeb;
+}
+
+.cs-stat .stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cs-stat .stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .cs-two-col { grid-template-columns: 1fr; gap: 20px; }
+  .cs-findings-grid { grid-template-columns: 1fr; }
+  .cs-outcome-stats { grid-template-columns: repeat(2, 1fr); }
+  .cs-section-title { font-size: 22px; }
+}
+
 
 /* ════════════════════════════════════════
    ABOUT PAGE
