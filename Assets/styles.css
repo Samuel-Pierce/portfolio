@@ -56,7 +56,7 @@ nav {
   line-height: 1.2;
 }
 
-.nav-logo-info span { font-size: 11px; color: #999; font-weight: 400; }
+.nav-logo-info span { font-size: 11px; color: #666; font-weight: 400; }
 
 .nav-links {
   display: flex;
@@ -223,7 +223,7 @@ mark {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
-  color: #888;
+  color: #666;
   text-transform: uppercase;
 }
 
@@ -286,22 +286,29 @@ mark {
   display: inline-flex;
   align-items: center;
   background-color: #f3f4f6;
-  padding: 4px 16px 4px 4px;
+  padding: 4px;
   border-radius: 999px;
-  gap: 12px;
   margin-bottom: 28px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
 }
 
 .badge-pill {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  bottom: 4px;
+  background: linear-gradient(to right, #7c22d4, #a855f7);
+  border-radius: 999px;
+  z-index: 0;
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, #7c22d4, #a855f7);
-  color: white;
-  padding: 6px 14px 6px 8px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 500;
-  gap: 8px;
+  padding: 0 10px 0 8px;
+  gap: 6px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .badge-pill-dot {
@@ -312,7 +319,7 @@ mark {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  flex-shrink: 0;
 }
 
 .pulse-dot {
@@ -323,11 +330,21 @@ mark {
   animation: pulse 2s infinite;
 }
 
-.badge-tagline {
-  color: black;
-  font-size: 16px;
-  font-weight: 450;
+.badge-label {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 14px;
+  white-space: nowrap;
+  transition: color 0.3s ease;
 }
+
+.badge-label--left  { color: #fff; padding-left: 38px; }
+.badge-label--right { color: #555; padding-left: 38px; }
+
+.hero-badge.toggled .badge-label--left  { color: #555; }
+.hero-badge.toggled .badge-label--right { color: #fff; }
 
 @keyframes pulse {
   0% {
@@ -383,7 +400,7 @@ mark {
 }
 
 .card-text strong { display: block; font-size: 14px; font-weight: 600; }
-.card-text span { font-size: 12px; color: #999; }
+.card-text span { font-size: 12px; color: #666; }
 .card-arrow { position: absolute; top: 14px; right: 14px; color: #aaa; font-size: 13px; }
 
 /* ── SHARED: CONTACT SECTION ── */
@@ -479,7 +496,7 @@ mark {
 }
 
 .form-success h3 { font-size: 17px; font-weight: 600; color: #111; margin-bottom: 6px; }
-.form-success p { font-size: 13.5px; color: #888; }
+.form-success p { font-size: 13.5px; color: #666; }
 
 
 /* ════════════════════════════════════════
@@ -559,7 +576,7 @@ mark {
 }
 
 .coming-soon-card h3 { font-size: 17px; font-weight: 600; color: #111; margin-bottom: 8px; }
-.coming-soon-card p { font-size: 13.5px; color: #999; line-height: 1.6; }
+.coming-soon-card p { font-size: 13.5px; color: #666; line-height: 1.6; }
 
 /* Index contact section has no border-top */
 .hero + .case-studies + .contact-section { border-top: none; }
@@ -921,7 +938,7 @@ mark {
 }
 
 .beyond-card h3 { font-size: 15px; font-weight: 600; color: #111; margin-bottom: 10px; line-height: 1.3; }
-.beyond-card p { font-size: 12.5px; color: #888; line-height: 1.65; }
+.beyond-card p { font-size: 12.5px; color: #666; line-height: 1.65; }
 
 /* Always Evolving */
 .evolving-section {
@@ -1022,7 +1039,7 @@ mark {
   align-items: center;
   gap: 5px;
   font-size: 13px;
-  color: #888;
+  color: #666;
   margin-bottom: 28px;
 }
 
@@ -1061,7 +1078,7 @@ mark {
 
 .client-date {
   font-size: 12px;
-  color: #999;
+  color: #666;
   font-weight: 500;
   white-space: nowrap;
   background: #f3f3f3;
@@ -1085,7 +1102,7 @@ mark {
 
 .section-subtitle {
   font-size: 14px;
-  color: #888;
+  color: #666;
   text-align: center;
   margin-bottom: 48px;
   line-height: 1.6;
@@ -1126,7 +1143,7 @@ mark {
   align-items: center;
   gap: 4px;
   font-size: 12px;
-  color: #888;
+  color: #666;
 }
 
 .job-bookmark { color: #ccc; flex-shrink: 0; margin-top: 2px; }
@@ -1134,7 +1151,7 @@ mark {
 .job-description {
   padding: 14px 24px;
   font-size: 13px;
-  color: #888;
+  color: #666;
   line-height: 1.65;
   border-bottom: 1px solid #f0f0f0;
 }
