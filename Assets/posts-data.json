@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": "post-1",
+      "title": "AI-Assisted Design: How I'm Moving 10x Faster",
+      "date": "2026-05-30",
+      "description": "Over the past year I've rebuilt my entire design workflow around AI — and the speed gains are hard to overstate. I'm using Claude to draft component specs, generate accessibility annotations, write token documentation, and even pressure-test design decisions before I bring them to stakeholders. This post breaks down exactly what's in my stack, what works, and where I still think human judgment is irreplaceable.",
+      "image": null,
+      "likes": 0
+    },
+    {
+      "id": "post-2",
+      "title": "Why Semantic Tokens Are the Foundation of Every Design System I Build",
+      "date": "2026-05-15",
+      "description": "Most design systems start with a color palette. Mine start with a semantic layer. The difference sounds subtle but it changes everything — from how your system handles dark mode and multi-brand theming to how quickly engineers can consume your tokens without needing a designer on standby. Here's the model I've refined across three enterprise-scale systems.",
+      "image": null,
+      "likes": 0
+    },
+    {
+      "id": "post-3",
+      "title": "What Nobody Tells You About Leading a Design Systems Team",
+      "date": "2026-04-28",
+      "description": "A design system is a product, not a project. That shift in framing sounds obvious but it took me two years and a lot of friction to fully internalize — and even longer to convince stakeholders. This is what I wish someone had told me before I stepped into a design systems lead role: how to set OKRs that actually matter, how to handle \"just make an exception,\" and why adoption is a design problem, not a communication problem.",
+      "image": null,
+      "likes": 0
+    }
+  ]
+}
