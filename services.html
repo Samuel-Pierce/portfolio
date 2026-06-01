@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Samuel Pierce</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="Assets/avatar.png" type="image/png" />
+  <link rel="stylesheet" href="Assets/styles.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <div class="nav-avatar">
+          <img src="Assets/avatar.png" alt="Sam Pierce" />
+        </div>
+        <div class="nav-logo-info">
+          <strong>Samuel Pierce</strong>
+          <span>AI-powered Design Systems Lead &amp; Super IC</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Work</a></li>
+        <li><a href="posts.html">Posts</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="https://www.linkedin.com/in/uxpierce/" target="_blank">LinkedIn</a></li>
+        <li><a href="contact.html" class="btn-contact">Contact</a></li>
+      </ul>
+      <div class="nav-mobile-right">
+        <a href="contact.html" class="btn-contact-mobile">Contact</a>
+        <button class="nav-hamburger" id="nav-hamburger-btn" aria-label="Open menu">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+            <line x1="0" y1="1" x2="16" y2="1" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="0" y1="6" x2="16" y2="6" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="0" y1="11" x2="16" y2="11" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="nav-overlay" id="nav-overlay">
+    <div class="nav-overlay-header">
+      <a class="nav-logo" href="index.html">
+        <div class="nav-avatar">
+          <img src="Assets/avatar.png" alt="Sam Pierce" />
+        </div>
+        <div class="nav-logo-info">
+          <strong>Samuel Pierce</strong>
+          <span>AI-powered Design Systems Lead &amp; Super IC</span>
+        </div>
+      </a>
+      <button class="nav-hamburger" id="nav-close-btn" aria-label="Close menu">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <line x1="1" y1="1" x2="13" y2="13" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="1" x2="1" y2="13" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <ul class="nav-overlay-links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="posts.html">Posts</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="https://www.linkedin.com/in/uxpierce/" target="_blank">LinkedIn</a></li>
+    </ul>
+    <div class="nav-overlay-footer">
+      <a href="contact.html" class="nav-overlay-contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="services-hero">
+    <p class="page-label">What I Offer</p>
+    <h1>Services</h1>
+    <p>From full-time embedded leadership to targeted consulting engagements — I work with product teams, design orgs, and startups who need enterprise-grade design systems thinking and execution.</p>
+  </div>
+
+  <!-- SERVICES CONTENT -->
+  <div class="services-content">
+
+    <div class="services-grid">
+
+      <!-- Service 1 -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+        </div>
+        <div class="service-card-title">Design Systems Strategy</div>
+        <div class="service-card-desc">Full ownership or advisory for your design system. Includes architecture, governance models, OKRs, team structure, and adoption roadmaps that create measurable org-wide impact.</div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="service-card-title">Token Architecture</div>
+        <div class="service-card-desc">Semantic token systems built for scale — multi-brand theming, dark mode, component-level overrides, and a clear naming convention engineers actually understand and adopt.</div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <div class="service-card-title">Design-to-Code Mastery</div>
+        <div class="service-card-desc">Shipping components native to both Figma and front-end code — with design specs, accessibility annotations, and handoff documentation that engineers actually use.</div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="service-card-title">Accessibility & Inclusive Design</div>
+        <div class="service-card-desc">WCAG compliance baked in from day one, not patched in later — covering color contrast, keyboard navigation, screen reader support, and accessible component patterns.</div>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="service-card-title">Cross-Functional Collaboration</div>
+        <div class="service-card-desc">Working across design, product, and engineering with empathy and clarity — facilitating alignment, running workshops, and keeping complex initiatives moving forward.</div>
+      </div>
+
+      <!-- Service 6 -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
+        <div class="service-card-title">Impact Measurement & Reporting</div>
+        <div class="service-card-desc">Coaching, mentoring, and building high-performing cross-functional teams — with OKRs, adoption metrics, and reporting frameworks that prove design system ROI.</div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="services-cta">
+      <h2>Ready to Work Together?</h2>
+      <p>Whether you need embedded leadership, a focused audit, or a partner to build something from scratch — let's start a conversation.</p>
+      <a href="contact.html" class="btn-cta-white">
+        Get in touch
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById('nav-hamburger-btn').addEventListener('click', function() {
+      document.getElementById('nav-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    document.getElementById('nav-close-btn').addEventListener('click', function() {
+      document.getElementById('nav-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  </script>
+  <script src="Assets/confetti.js"></script>
+</body>
+</html>
