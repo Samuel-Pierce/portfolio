@@ -96,5 +96,12 @@
         toggleBadge(badge);
       });
     });
+
+    document.querySelectorAll('.post-like-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        const rect = btn.getBoundingClientRect();
+        createConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      });
+    });
   });
 })();

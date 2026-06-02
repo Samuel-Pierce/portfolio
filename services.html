@@ -77,10 +77,13 @@
   </div>
 
   <!-- HERO -->
-  <div class="services-hero">
-    <p class="page-label">What I Offer</p>
-    <h1>Services</h1>
-    <p>From full-time embedded leadership to targeted consulting engagements — I work with product teams, design orgs, and startups who need enterprise-grade design systems thinking and execution.</p>
+  <div class="services-hero-wrap">
+    <img class="hero-grid-bg" src="Assets/square-alt-grid.svg" alt="" aria-hidden="true" />
+    <div class="services-hero">
+      <p class="page-label">What I Offer</p>
+      <h1>Services</h1>
+      <p>From full-time embedded leadership to targeted consulting engagements — I work with product teams, design orgs, and startups who need enterprise-grade design systems thinking and execution.</p>
+    </div>
   </div>
 
   <!-- SERVICES CONTENT -->
@@ -167,20 +170,371 @@
 
     </div>
 
-    <!-- CTA -->
+    <!-- BOOKING CTA -->
     <div class="services-cta">
       <h2>Ready to Work Together?</h2>
       <p>Whether you need embedded leadership, a focused audit, or a partner to build something from scratch — let's start a conversation.</p>
-      <a href="contact.html" class="btn-cta-white">
-        Get in touch
+      <button class="btn-cta-white" id="book-call-btn">
+        Book an Initial Call
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"/>
           <polyline points="12 5 19 12 12 19"/>
         </svg>
-      </a>
+      </button>
+    </div>
+
+    <!-- BOOKING MODAL -->
+    <div class="booking-modal" id="booking-modal">
+      <div class="booking-modal-content">
+        <button class="booking-close" id="booking-close-btn" aria-label="Close booking">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        
+        <div class="booking-container">
+          <!-- Left side: Calendar -->
+          <div class="booking-calendar-section">
+            <div class="booking-calendar-header">
+              <button class="booking-month-nav" id="prev-month">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"/>
+                </svg>
+              </button>
+              <h3 id="calendar-month-year"></h3>
+              <button class="booking-month-nav" id="next-month">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </button>
+            </div>
+            
+            <div class="booking-calendar-weekdays">
+              <div>Sun</div>
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
+            </div>
+            
+            <div class="booking-calendar-days" id="calendar-days"></div>
+          </div>
+
+          <!-- Right side: Time Slots & Form -->
+          <div class="booking-form-section">
+            <div id="time-slots-container" class="booking-time-slots" style="display: none;">
+              <h4>Select a time (EST)</h4>
+              <div id="time-slots-grid" class="booking-time-slots-grid"></div>
+            </div>
+
+            <form class="booking-form" name="booking" method="POST" data-netlify="true" id="booking-form" style="display: none;">
+              <input type="hidden" name="form-name" value="booking" />
+              <input type="hidden" id="booking-datetime" name="booking_datetime" />
+              
+              <h4>Your Details</h4>
+              
+              <div class="form-group">
+                <label for="booking-name">Full name</label>
+                <input type="text" id="booking-name" name="name" placeholder="John Doe" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="booking-email">Email</label>
+                <input type="email" id="booking-email" name="email" placeholder="john@example.com" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="booking-company">Company</label>
+                <input type="text" id="booking-company" name="company" placeholder="Your Company" />
+              </div>
+              
+              <div class="form-group full">
+                <label for="booking-message">What would you like to discuss?</label>
+                <textarea id="booking-message" name="message" placeholder="Tell me about your project..." required></textarea>
+              </div>
+              
+              <button type="submit" class="submit-btn">Confirm Booking</button>
+              <button type="button" class="btn-secondary" id="back-to-calendar">← Back</button>
+            </form>
+
+            <div class="booking-success" id="booking-success" style="display: none;">
+              <div class="booking-success-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <h3>Booking Confirmed!</h3>
+              <p>Check your email for a confirmation. I'll send you a calendar invite shortly.</p>
+              <button type="button" class="submit-btn" id="close-after-success">Done</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
+
+  <!-- BOOKING SCRIPTS -->
+  <script>
+    // Configuration
+    const BUSINESS_HOURS = { start: 9, end: 17 }; // 9 AM to 5 PM
+    const SLOT_DURATION = 30; // minutes
+    const TIMEZONE = 'America/New_York'; // EST/EDT
+
+    let selectedDate = null;
+    let selectedTime = null;
+    let currentMonth = new Date();
+
+    // DOM Elements
+    const bookingModal = document.getElementById('booking-modal');
+    const bookingForm = document.getElementById('booking-form');
+    const bookingFormSection = document.querySelector('.booking-form-section');
+    const timeSlotsContainer = document.getElementById('time-slots-container');
+    const bookingSuccess = document.getElementById('booking-success');
+    const bookingDatetimeInput = document.getElementById('booking-datetime');
+
+    // Event Listeners
+    document.getElementById('book-call-btn').addEventListener('click', openBooking);
+    document.getElementById('booking-close-btn').addEventListener('click', closeBooking);
+    document.getElementById('prev-month').addEventListener('click', prevMonth);
+    document.getElementById('next-month').addEventListener('click', nextMonth);
+    document.getElementById('back-to-calendar').addEventListener('click', backToCalendar);
+    document.getElementById('close-after-success').addEventListener('click', closeBooking);
+
+    // Modal backdrop close
+    bookingModal.addEventListener('click', function(e) {
+      if (e.target === bookingModal) closeBooking();
+    });
+
+    // Form submission
+    bookingForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.submit-btn');
+      btn.textContent = 'Confirming…';
+      btn.disabled = true;
+
+      // Set the datetime field
+      bookingDatetimeInput.value = `${selectedDate.toDateString()} at ${selectedTime}`;
+
+      try {
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(this)).toString()
+        });
+        if (res.ok) {
+          bookingForm.style.display = 'none';
+          timeSlotsContainer.style.display = 'none';
+          bookingSuccess.style.display = 'flex';
+        } else {
+          btn.textContent = 'Confirm Booking';
+          btn.disabled = false;
+          alert('Something went wrong. Please try again.');
+        }
+      } catch {
+        btn.textContent = 'Confirm Booking';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    });
+
+    function openBooking() {
+      bookingModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      currentMonth = new Date();
+      renderCalendar();
+    }
+
+    function closeBooking() {
+      bookingModal.classList.remove('open');
+      document.body.style.overflow = '';
+      resetBooking();
+    }
+
+    function resetBooking() {
+      selectedDate = null;
+      selectedTime = null;
+      document.querySelectorAll('.booking-day.selected').forEach(el => el.classList.remove('selected'));
+      document.querySelectorAll('.booking-time-slot.selected').forEach(el => el.classList.remove('selected'));
+      bookingForm.style.display = 'none';
+      bookingForm.reset();
+      timeSlotsContainer.style.display = 'none';
+      bookingSuccess.style.display = 'none';
+      const submitBtn = bookingForm.querySelector('.submit-btn');
+      submitBtn.textContent = 'Confirm Booking';
+      submitBtn.disabled = false;
+    }
+
+    function prevMonth() {
+      currentMonth.setMonth(currentMonth.getMonth() - 1);
+      renderCalendar();
+    }
+
+    function nextMonth() {
+      currentMonth.setMonth(currentMonth.getMonth() + 1);
+      renderCalendar();
+    }
+
+    function renderCalendar() {
+      const year = currentMonth.getFullYear();
+      const month = currentMonth.getMonth();
+      
+      // Update month/year display
+      document.getElementById('calendar-month-year').textContent = 
+        currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+      // Prevent booking in the past
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      if (year < today.getFullYear() || (year === today.getFullYear() && month < today.getMonth())) {
+        document.getElementById('prev-month').disabled = true;
+      } else {
+        document.getElementById('prev-month').disabled = false;
+      }
+
+      // Get first day of month and number of days
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      // Render days
+      const calendarDays = document.getElementById('calendar-days');
+      calendarDays.innerHTML = '';
+
+      // Empty cells for days before month starts
+      for (let i = 0; i < firstDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'booking-day empty';
+        calendarDays.appendChild(emptyCell);
+      }
+
+      // Days of the month
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayElement = document.createElement('button');
+        dayElement.className = 'booking-day';
+        dayElement.textContent = day;
+
+        const date = new Date(year, month, day);
+        date.setHours(0, 0, 0, 0);
+
+        // Disable past dates and Sundays (0)
+        if (date < today || date.getDay() === 0) {
+          dayElement.disabled = true;
+          dayElement.className += ' disabled';
+        }
+
+        // Mark weekends
+        if (date.getDay() === 6 || date.getDay() === 0) {
+          dayElement.className += ' weekend';
+        }
+
+        dayElement.addEventListener('click', () => selectDate(date, dayElement));
+
+        calendarDays.appendChild(dayElement);
+      }
+    }
+
+    function selectDate(date, element) {
+      if (selectedDate === date && element.classList.contains('selected')) {
+        // Deselect if clicking again
+        selectedDate = null;
+        selectedTime = null;
+        element.classList.remove('selected');
+        timeSlotsContainer.style.display = 'none';
+      } else {
+        // Select new date
+        document.querySelectorAll('.booking-day.selected').forEach(el => el.classList.remove('selected'));
+        selectedDate = date;
+        selectedTime = null;
+        element.classList.add('selected');
+        renderTimeSlots(date);
+        timeSlotsContainer.style.display = 'block';
+      }
+    }
+
+    function renderTimeSlots(date) {
+      const timeSlotsGrid = document.getElementById('time-slots-grid');
+      timeSlotsGrid.innerHTML = '';
+
+      const slots = generateTimeSlots(date);
+
+      slots.forEach(slot => {
+        const slotButton = document.createElement('button');
+        slotButton.className = 'booking-time-slot';
+        slotButton.type = 'button';
+        slotButton.textContent = slot.display;
+
+        slotButton.addEventListener('click', () => selectTime(slot, slotButton));
+
+        timeSlotsGrid.appendChild(slotButton);
+      });
+    }
+
+    function generateTimeSlots(date) {
+      const slots = [];
+      const isToday = new Date().toDateString() === date.toDateString();
+      const now = new Date();
+      const currentHour = now.getHours();
+      const currentMinute = now.getMinutes();
+
+      for (let hour = BUSINESS_HOURS.start; hour < BUSINESS_HOURS.end; hour++) {
+        for (let minute = 0; minute < 60; minute += SLOT_DURATION) {
+          // Skip times that have already passed today
+          if (isToday && (hour < currentHour || (hour === currentHour && minute <= currentMinute))) {
+            continue;
+          }
+
+          // Skip times after 4:30 PM (need 30 min before 5 PM)
+          if (hour === BUSINESS_HOURS.end - 1 && minute > 30) {
+            continue;
+          }
+
+          const display = formatTime(hour, minute);
+          slots.push({
+            hour,
+            minute,
+            display,
+            iso: date.toISOString().split('T')[0] + `T${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:00`
+          });
+        }
+      }
+
+      return slots;
+    }
+
+    function formatTime(hour, minute) {
+      const meridiem = hour >= 12 ? 'PM' : 'AM';
+      const displayHour = hour > 12 ? hour - 12 : (hour === 0 ? 12 : hour);
+      return `${displayHour}:${String(minute).padStart(2, '0')} ${meridiem}`;
+    }
+
+    function selectTime(slot, element) {
+      if (selectedTime === slot.display && element.classList.contains('selected')) {
+        // Deselect
+        selectedTime = null;
+        element.classList.remove('selected');
+        bookingForm.style.display = 'none';
+      } else {
+        // Select new time
+        document.querySelectorAll('.booking-time-slot.selected').forEach(el => el.classList.remove('selected'));
+        selectedTime = slot.display;
+        element.classList.add('selected');
+        bookingForm.style.display = 'block';
+      }
+    }
+
+    function backToCalendar() {
+      bookingForm.style.display = 'none';
+      timeSlotsContainer.style.display = 'block';
+      selectedTime = null;
+      document.querySelectorAll('.booking-time-slot.selected').forEach(el => el.classList.remove('selected'));
+    }
+
+    // Initialize
+    renderCalendar();
+  </script>
 
   <script>
     document.getElementById('nav-hamburger-btn').addEventListener('click', function() {
