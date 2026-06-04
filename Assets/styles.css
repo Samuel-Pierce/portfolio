@@ -605,6 +605,17 @@ mark {
   transform: translateY(-2px);
 }
 
+.cs-card--disabled {
+  pointer-events: none;
+  opacity: 0.45;
+  cursor: default;
+}
+
+.cs-card--disabled:hover {
+  box-shadow: none;
+  transform: none;
+}
+
 .cs-card-image {
   width: 100%;
   aspect-ratio: 16 / 9;
